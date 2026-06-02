@@ -176,18 +176,20 @@
   ════════════════════════════════ */
   #screenTask {
     align-items: stretch;
+    flex-direction: column;
   }
 
   /* Sidebar task */
   .sidebar-task {
-    width: 340px;
-    min-width: 340px;
-    padding: 64px 44px 44px;
+    width: 100%;
+    min-width: unset;
+    padding: 40px 56px 32px;
     display: flex;
     flex-direction: column;
-    border-right: 1px solid #f0f0f0;
+    border-right: none;
+    border-bottom: 1px solid #f0f0f0;
     flex-shrink: 0;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .sidebar-desc {
@@ -200,7 +202,7 @@
 
   .sidebar-progress {
     margin-top: auto;
-    padding-top: 32px;
+    padding-top: 16px;
   }
 
   .progress-label {
@@ -255,6 +257,14 @@
   }
 
   /* Task main */
+  .col-right-footer {
+    margin-top: auto;
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
   .task-main {
     flex: 1;
     display: flex;
@@ -465,7 +475,7 @@
   ════════════════════════════════ */
   @media (max-width: 1400px) {
     .sidebar-intro { width: 480px; min-width: 480px; }
-    .sidebar-task { width: 300px; min-width: 300px; padding: 48px 32px 32px; }
+    .sidebar-task { padding: 32px 40px 28px; }
     .sidebar-title { font-size: 32px; }
     .intro-main { padding: 60px; }
     .task-main { padding: 0 40px 40px; }
@@ -474,7 +484,7 @@
 
   @media (max-width: 1280px) {
     .sidebar-intro { width: 380px; min-width: 380px; }
-    .sidebar-task { width: 260px; min-width: 260px; padding: 40px 28px 28px; }
+    .sidebar-task { padding: 28px 32px 24px; }
     .sidebar-title { font-size: 28px; }
     .intro-main { padding: 48px; }
     .task-main { padding: 0 32px 32px; }
@@ -495,13 +505,7 @@
     .intro-main { padding: 24px 20px; }
     .intro-content { gap: 48px; }
     .intro-text { font-size: 24px; }
-    .sidebar-task {
-      width: 100%;
-      min-width: unset;
-      border-right: none;
-      border-bottom: 1px solid #f0f0f0;
-      padding: 32px 24px;
-    }
+    .sidebar-task { padding: 24px 20px; }
     .task-main { flex-direction: column; padding: 24px 20px; }
     .col-divider { width: 100%; height: 1px; margin: 24px 0; }
   }
@@ -526,14 +530,6 @@
     <h1 class="sidebar-title">¿Cómo funciona hoy el marketing de influencia?</h1>
     <p class="sidebar-desc">El marketing de influencia ya no es una práctica puntual: es una industria global en crecimiento que sitúa al creador en el centro del sistema.</p>
     <p class="sidebar-desc" style="margin-top: 24px;">Arrastra cada opción hasta el concepto que mejor la describe.</p>
-    <button class="btn" id="resetBtn" style="margin-top: 28px;">
-      ↺ Reiniciar
-    </button>
-    <div class="sidebar-progress">
-      <div class="progress-label">Progreso</div>
-      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-      <div class="progress-count" id="progressCount">0 de 4 completadas</div>
-    </div>
   </aside>
 
   <main class="task-main">
@@ -549,6 +545,14 @@
       <div class="drop-zone empty" data-accept="deinf"><span class="drop-zone-label">De-Influencing</span></div>
       <div class="drop-zone empty" data-accept="live"><span class="drop-zone-label">Live stream shopping</span></div>
       <div class="drop-zone empty" data-accept="crudo"><span class="drop-zone-label">La estética de lo crudo</span></div>
+      <div class="col-right-footer">
+        <button class="btn" id="resetBtn">↺ Reiniciar</button>
+        <div class="sidebar-progress">
+          <div class="progress-label">Progreso</div>
+          <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+          <div class="progress-count" id="progressCount">0 de 4 completadas</div>
+        </div>
+      </div>
     </div>
 
   </main>

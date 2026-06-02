@@ -299,7 +299,6 @@
     flex-direction: column;
     gap: 16px;
     overflow-y: visible;
-    padding-top: 50px;
   }
 
   #colLeft.show-message {
@@ -536,6 +535,14 @@
 
     <div class="col" id="colLeft">
       <div class="task-message" id="taskMessage" aria-live="polite"></div>
+      <div class="col-right-footer">
+        <button class="btn" id="resetBtn">↺ Reiniciar</button>
+        <div class="sidebar-progress">
+          <div class="progress-label">Progreso</div>
+          <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+          <div class="progress-count" id="progressCount">0 de 4 completadas</div>
+        </div>
+      </div>
     </div>
 
     <div class="col-divider"></div>
@@ -545,14 +552,6 @@
       <div class="drop-zone empty" data-accept="deinf"><span class="drop-zone-label">De-Influencing</span></div>
       <div class="drop-zone empty" data-accept="live"><span class="drop-zone-label">Live stream shopping</span></div>
       <div class="drop-zone empty" data-accept="crudo"><span class="drop-zone-label">La estética de lo crudo</span></div>
-      <div class="col-right-footer">
-        <button class="btn" id="resetBtn">↺ Reiniciar</button>
-        <div class="sidebar-progress">
-          <div class="progress-label">Progreso</div>
-          <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-          <div class="progress-count" id="progressCount">0 de 4 completadas</div>
-        </div>
-      </div>
     </div>
 
   </main>

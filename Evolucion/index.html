@@ -80,13 +80,11 @@
     }
 
     .header-body {
-      font-family: 'Libre Baskerville', Georgia, serif;
+      font-family: 'Inter', sans-serif;
       font-weight: 400;
-      /* 1.8vw escala con pantalla grande; techo 2rem evita que sea excesivo */
-      font-size: clamp(1rem, 1.8vw, 2rem);
-      line-height: 1.65;
+      font-size: clamp(1rem, 1.3vw, 1.5rem);
+      line-height: 1.9;
       margin-top: 30px;
-      /* padding-bottom: evita que el texto quede clipado por overflow:hidden */
       padding-bottom: max(5vh, 40px);
       color: #000;
     }
@@ -258,6 +256,13 @@
 
     /* img-main nunca anima — es el fondo estático de la sección */
     .img-main { opacity: 1 !important; transform: none !important; }
+
+    /* Prioriza la parte superior en las tres primeras secciones */
+    .panel-prestigio .img-main,
+    .panel-magnetismo .img-main,
+    .panel-medios .img-main {
+      object-position: center top;
+    }
 
     .panel.visible .fade-up,
     .panel.visible .fade-in {

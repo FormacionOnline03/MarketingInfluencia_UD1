@@ -1,0 +1,140 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;700&display=swap');
+
+  .card {
+    background-color: #ffffff;
+    width: 1800px;
+    height: 900px;
+    position: relative;
+    font-family: 'Inter', Helvetica, sans-serif;
+    overflow: hidden;
+    transform-origin: top left;
+  }
+
+  .content-col {
+    position: absolute;
+    top: 0; left: 0;
+    width: 950px;
+    height: 900px;
+    padding: 76px 109px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    box-sizing: border-box;
+  }
+
+  .label {
+    font-family: 'Inter', Helvetica, sans-serif;
+    font-weight: 700;
+    color: #000;
+    font-size: 100px;
+    line-height: 1.0;
+    margin: 0;
+  }
+
+  .subtitle {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-weight: 400;
+    color: #000;
+    font-size: 80px;
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  .body-text {
+    font-family: 'Inter', Helvetica, sans-serif;
+    font-weight: 400;
+    color: #000;
+    font-size: 30px;
+    line-height: 1.65;
+    margin: auto 0 0 0;
+    width: 573px;
+  }
+
+  .img-main {
+    position: absolute;
+    top: 0; right: 0;
+    width: 761px;
+    height: 900px;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .img-main .placeholder {
+    width: 100%; height: 100%;
+    background: #ddd5c4;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .img-secondary {
+    position: absolute;
+    bottom: 0;
+    left: 908px;
+    width: 400px;
+    height: 450px;
+    overflow: hidden;
+    z-index: 3;
+  }
+
+  .img-secondary .placeholder {
+    width: 100%; height: 100%;
+    background: #c8c0b4;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .placeholder svg { opacity: 0.25; width: 48px; height: 48px; }
+
+  .scaler {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+</style>
+
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Prestigio: Influencia como legitimación</h2>
+
+<div class="scaler" id="scaler-prestigio">
+  <div class="card" id="card-prestigio">
+    <div class="content-col">
+      <p class="label">Prestigio:</p>
+      <p class="subtitle">Influencia como<br>legitimación</p>
+      <p class="body-text">Figuras de alto estatus (aristocracia, élites económicas) definen lo que tiene valor. Los objetos se vuelven deseables al ser utilizados por estos referentes, que actúan como sello de aprobación social.</p>
+    </div>
+
+    <div class="img-main">
+      <div class="placeholder" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="8" width="48" height="48" rx="4" stroke="#7a6a55" stroke-width="3"/>
+          <circle cx="24" cy="24" r="6" stroke="#7a6a55" stroke-width="3"/>
+          <path d="M8 44l14-14 10 10 8-8 16 14" stroke="#7a6a55" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="img-secondary">
+      <div class="placeholder" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="8" width="48" height="48" rx="4" stroke="#5a5248" stroke-width="3"/>
+          <circle cx="24" cy="24" r="6" stroke="#5a5248" stroke-width="3"/>
+          <path d="M8 44l14-14 10 10 8-8 16 14" stroke="#5a5248" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const scaler = document.getElementById('scaler-prestigio');
+    const card = document.getElementById('card-prestigio');
+    function resize() {
+      const w = scaler.offsetWidth;
+      const scale = w / 1800;
+      card.style.transform = 'scale(' + scale + ')';
+      scaler.style.height = (900 * scale) + 'px';
+    }
+    resize();
+    window.addEventListener('resize', resize);
+  })();
+</script>

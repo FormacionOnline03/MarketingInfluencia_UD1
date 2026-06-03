@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evolución de la influencia</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    @font-face {
+      font-family: 'Balto';
+      src: url('Recursos/Fonts/Balto-Book.ttf') format('truetype');
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: 'Balto';
+      src: url('Recursos/Fonts/Balto-Bold.ttf') format('truetype');
+      font-weight: 700;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body { font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden; }
+
+    /* ─── STICKY STACK ──────────────────────────────────────── */
+
+    .scroll-container { height: 600vh; }
+
+    .panel {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .panel:nth-child(1) { z-index: 1; }
+    .panel:nth-child(2) { z-index: 2; }
+    .panel:nth-child(3) { z-index: 3; }
+    .panel:nth-child(4) { z-index: 4; }
+    .panel:nth-child(5) { z-index: 5; }
+    .panel:nth-child(6) { z-index: 6; }
+
+    /* ─── SECTION BACKGROUNDS ───────────────────────────────── */
+
+    .panel-header     { background: #f8f3b3; }
+    .panel-prestigio  { background: #ffffff; }
+    .panel-magnetismo { background: #f5ede0; }
+    .panel-medios     { background: #f0eee8; }
+    .panel-digital    { background: #e9eef2; }
+    .panel-algoritmo  { background: #dfd6c8; }
+
+    /* ─── CABECERA INLINE ───────────────────────────────────── */
+
+    .header-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100%;
+      width: 100%;
+    }
+
+    .header-text {
+      display: flex;
+      flex-direction: column;
+      padding: 5vh 3vw 5vh 6vw;
+      height: 100%;
+    }
+
+    .header-headline {
+      font-family: 'Balto', 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      /* Grande: ocupa el bloque superior de la columna izquierda */
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: #000;
+    }
+
+    .header-body {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-weight: 400;
+      /* 1.8vw escala con pantalla grande; techo 2rem evita que sea excesivo */
+      font-size: clamp(1rem, 1.8vw, 2rem);
+      line-height: 1.65;
+      margin-top: auto;
+      /* padding-bottom: evita que el texto quede clipado por overflow:hidden */
+      padding-bottom: max(5vh, 40px);
+      color: #000;
+    }
+
+    .header-initial {
+      font-family: 'Balto', 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 700;
+      line-height: 0.85;
+      float: left;
+      margin-right: 0.1em;
+      margin-top: 0.05em;
+    }
+
+    .header-image {
+      height: 100%;
+      /* Sin overflow:hidden para que los recortes puedan salir del borde */
+      overflow: visible;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .header-image img {
+      width: 100%;
+      height: 100%;
+      /* contain: muestra la imagen completa sobre el fondo amarillo,
+         como los recortes de la referencia */
+      object-fit: contain;
+      object-position: center left;
+      display: block;
+    }
+
+    /* ─── SPLIT LAYOUT (secciones de contenido) ─────────────── */
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100%;
+    }
+
+    /* ─── TEXT COLUMN ───────────────────────────────────────── */
+
+    .col-text {
+      display: flex;
+      flex-direction: column;
+      /* padding-bottom generoso: el translateY(40px) de fade-up nunca
+         saldrá del overflow:hidden del panel */
+      padding: 6vh 4vw max(100px, 11vh) 6vw;
+      height: 100%;
+      color: #111111;
+    }
+
+    .panel-algoritmo .col-text { color: #111111; }
+
+    .col-text .label {
+      font-family: 'Balto', 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: clamp(3.4rem, 7.5vw, 6.2rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .col-text .subtitle {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(2rem, 4.5vw, 3.8rem);
+      line-height: 1.12;
+      margin-top: 0.35em;
+    }
+
+    .col-text .body-text {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: clamp(0.85rem, 1.1vw, 1rem);
+      line-height: 1.9;
+      margin-top: auto;
+      max-width: 30rem;
+      color: rgba(17, 17, 17, 0.68);
+    }
+
+    .panel-algoritmo .body-text { color: rgba(17, 17, 17, 0.68); }
+
+    /* ─── IMAGE COLUMN ──────────────────────────────────────── */
+
+    .col-image {
+      position: relative;
+      height: 100%;
+      overflow: visible;
+      /* min-width:0 evita que el grid cell se expanda más de 1fr */
+      min-width: 0;
+    }
+
+    /* Posición absoluta garantiza que la imagen rellene
+       exactamente la columna independientemente de su aspect ratio */
+    .img-main {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .img-secondary {
+      position: absolute;
+      bottom: 0;
+      left: -18%;
+      width: 58%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+    }
+
+    .img-secondary img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .split.reverse .col-image { order: -1; }
+    .split.reverse .img-secondary {
+      left: auto;
+      right: -18%;
+    }
+
+    /*
+      Secciones reversas: img-secondary sangra ~9vw hacia la columna de texto
+      por la derecha. Col-text ya tiene 6vw de padding-left; añadimos 5vw
+      más al body-text para que empiece en el claro.
+    */
+    .split.reverse .body-text {
+      padding-left: 5vw;
+    }
+
+    /*
+      Secciones normales: img-secondary sangra ~9vw desde el inicio del
+      col-image (izquierda de la columna de imagen = 50vw del viewport).
+      El body-text arranca en 6vw; limitamos su ancho para que su borde
+      derecho no supere los ~40vw y no choque con la imagen secundaria.
+    */
+    .split:not(.reverse) .body-text {
+      max-width: min(30rem, 33vw);
+    }
+
+    /* ─── ANIMACIONES ───────────────────────────────────────── */
+
+    /* Entrada con desplazamiento vertical — para label, subtitle, img-secondary */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition:
+        opacity  0.7s cubic-bezier(0.25, 0.1, 0.25, 1),
+        transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    .fade-up.d0 { transition-delay: 0s;    }
+    .fade-up.d1 { transition-delay: 0.15s; }
+    .fade-up.d3 { transition-delay: 0.45s; }
+
+    /* Solo opacidad — para body-text al pie de la columna:
+       translateY lo empujaría fuera del overflow:hidden del panel */
+    .fade-in {
+      opacity: 0;
+      transition: opacity 0.7s cubic-bezier(0.25, 0.1, 0.25, 1) 0.3s;
+    }
+
+    /* img-main nunca anima — es el fondo estático de la sección */
+    .img-main { opacity: 1 !important; transform: none !important; }
+
+    .panel.visible .fade-up,
+    .panel.visible .fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ────────────────────────────────────────── */
+
+    @media (max-width: 860px) {
+      .header-inner {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto;
+      }
+      .header-image { order: -1; height: 45vh; overflow: hidden; }
+      .header-image img { object-fit: cover; object-position: center top; }
+      .header-text { padding: 3vh 5vw 4vh 5vw; }
+      .header-body { margin-top: 1.2rem; }
+
+      .split,
+      .split.reverse {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+      }
+      .split.reverse .col-image { order: unset; }
+
+      .col-text {
+        padding: 3.5vh 5vw max(60px, 8vh) 5vw;
+        justify-content: center;
+      }
+      .col-text .body-text { margin-top: 1.5rem; }
+      .split.reverse .body-text { padding-left: 0; }
+
+      .img-secondary { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="scroll-container">
+
+  <!-- ── CABECERA ─────────────────────────────────────────── -->
+  <section class="panel panel-header" data-section="header">
+    <div class="header-inner">
+      <div class="header-text">
+        <p class="header-headline">Evolución de la influencia en moda</p>
+        <p class="header-body">
+          <span class="header-initial">A</span>
+          lo largo del tiempo, la influencia ha adoptado distintas formas, ha cambiado de actores y de plataformas, pero ha mantenido su función: definir qué es deseable. Entender su evolución permite identificar cómo se genera valor en cada momento y con qué herramientas opera hoy el marketing de influencias en el ámbito de la moda.
+        </p>
+      </div>
+      <div class="header-image">
+        <img src="Imagenes/ImagenCabecera.png" alt="Evolución de la influencia en moda" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 1 · PRESTIGIO ─── imagen derecha ────────────────── -->
+  <section class="panel panel-prestigio" data-section="prestigio">
+    <div class="split">
+      <div class="col-text">
+        <p class="label    fade-up d0">Prestigio:</p>
+        <p class="subtitle fade-up d1">Influencia como legitimación</p>
+        <p class="body-text fade-in">Figuras de alto estatus (aristocracia, élites económicas) definen lo que tiene valor. Los objetos se vuelven deseables al ser utilizados por estos referentes, que actúan como sello de aprobación social.</p>
+      </div>
+      <div class="col-image">
+        <img class="img-main" src="Imagenes/Prestigio1.png" alt="Imagen sobre prestigio e influencia" />
+        <div class="img-secondary fade-up d3">
+          <img src="Imagenes/Prestigio2.png" alt="" aria-hidden="true" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 2 · MAGNETISMO ─── imagen izquierda ──────────────── -->
+  <section class="panel panel-magnetismo" data-section="magnetismo">
+    <div class="split reverse">
+      <div class="col-text">
+        <p class="label    fade-up d0">Magnetismo:</p>
+        <p class="subtitle fade-up d1">El «it» y el nacimiento del deseo</p>
+        <p class="body-text fade-in">La influencia deja de depender solo del estatus y se desplaza hacia la presencia. Surge el «it»: una forma de magnetismo que concentra atención y aspiración, convirtiendo a ciertas figuras en referentes culturales. El deseo ya no solo se hereda… también se produce.</p>
+      </div>
+      <div class="col-image">
+        <img class="img-main" src="Imagenes/Magnetismo1.png" alt="Imagen sobre magnetismo e influencia" />
+        <div class="img-secondary fade-up d3">
+          <img src="Imagenes/Magnetismo2.png" alt="" aria-hidden="true" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 3 · MEDIOS DE MASAS ─── imagen derecha ───────────── -->
+  <section class="panel panel-medios" data-section="medios">
+    <div class="split">
+      <div class="col-text">
+        <p class="label    fade-up d0">Medios de masas:</p>
+        <p class="subtitle fade-up d1">Producción y repetición de iconos</p>
+        <p class="body-text fade-in">Cine, moda y publicidad configuran un sistema coordinado de visibilidad. Las imágenes se repiten en distintos medios hasta fijar referentes claros de estilo.</p>
+      </div>
+      <div class="col-image">
+        <img class="img-main" src="Imagenes/Medios1.png" alt="Imagen sobre medios de masas e iconos de moda" />
+        <div class="img-secondary fade-up d3">
+          <img src="Imagenes/Medios2.png" alt="" aria-hidden="true" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 4 · YO DIGITAL ─── imagen izquierda ─────────────── -->
+  <section class="panel panel-digital" data-section="digital">
+    <div class="split reverse">
+      <div class="col-text">
+        <p class="label    fade-up d0">Yo digital:</p>
+        <p class="subtitle fade-up d1">Democratización de la influencia</p>
+        <p class="body-text fade-in">La creación y difusión de contenido se abre a cualquier persona. Blogs y redes sociales permiten construir visibilidad sin intermediarios, generando nuevas formas de prescripción basadas en cercanía y experiencia. La influencia se desplaza de la representación a la autoexpresión.</p>
+      </div>
+      <div class="col-image">
+        <img class="img-main" src="Imagenes/Digital1.png" alt="Imagen sobre influencia digital y redes sociales" />
+        <div class="img-secondary fade-up d3">
+          <img src="Imagenes/Digital2.png" alt="" aria-hidden="true" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 5 · ALGORITMO ─── imagen derecha ─────────────────── -->
+  <section class="panel panel-algoritmo" data-section="algoritmo">
+    <div class="split">
+      <div class="col-text">
+        <p class="label    fade-up d0">Algoritmo:</p>
+        <p class="subtitle fade-up d1">Influencia basada en rendimiento</p>
+        <p class="body-text fade-in">La visibilidad deja de depender principalmente de quién publica y pasa a depender de cómo funciona el contenido. Plataformas como TikTok reorganizan la influencia en torno a la atención y la interacción. El valor se mide en rendimiento: captar, sostener y convertir la atención.</p>
+      </div>
+      <div class="col-image">
+        <img class="img-main" src="Imagenes/Algoritmo1.png" alt="Imagen sobre algoritmos e influencia digital" />
+        <div class="img-secondary fade-up d3">
+          <img src="Imagenes/Algoritmo2.png" alt="" aria-hidden="true" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  const panels = document.querySelectorAll('.panel[data-section]');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  panels.forEach(panel => observer.observe(panel));
+</script>
+
+</body>
+</html>

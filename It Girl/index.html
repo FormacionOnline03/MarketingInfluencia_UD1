@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>It Girl — Marketing de Influencias</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: "Balto-Bold";
+  src: local("Balto-Bold"),
+       url("../Evolucion/Recursos/Fonts/Balto-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { overflow-x: clip; }
+body { overflow-x: clip; font-family: "Inter", sans-serif; }
+
+/* ─── HEADER ─────────────────────────────────────────────── */
+.site-header {
+  position: relative;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #fff;
+}
+
+.header-media {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  transition: width 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: width;
+}
+
+.header-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.header-title {
+  position: absolute;
+  top: 5.26%;
+  left: 3.52%;
+  font-family: "Balto-Bold", Helvetica, sans-serif;
+  font-weight: 700;
+  color: #fff;
+  font-size: clamp(3rem, 11.3vw, 11.3vw);
+  line-height: 1;
+  z-index: 2;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.header-right {
+  flex-shrink: 0;
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 7.1% 5.88%;
+  background: #fff;
+  transition:
+    width 0.9s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.5s;
+  will-change: width, opacity;
+}
+
+.site-header.expanded .header-media { width: 53.5vw; }
+.site-header.expanded .header-right  { width: 46.5vw; opacity: 1; }
+
+.header-text-area {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4em;
+}
+
+.header-para {
+  font-family: "Balto-Bold", Helvetica, sans-serif;
+  font-weight: 400;
+  color: #000;
+  font-size: clamp(1rem, 2.19vw, 2.19vw);
+  line-height: 1.35;
+}
+
+.header-para .bold { font-weight: 700; }
+
+.header-para .body-text {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.8rem, 1.37vw, 1.37vw);
+  line-height: 1.7;
+  color: #444;
+}
+
+.header-strip {
+  display: flex;
+  flex-direction: row;
+  gap: 22px;
+  margin-top: 2.5rem;
+  flex-shrink: 0;
+  overflow-x: auto;
+}
+
+.strip-ph {
+  width: 143px;
+  height: 214px;
+  flex-shrink: 0;
+  background: #e0ddd8;
+}
+
+.strip-img {
+  width: 143px;
+  height: 214px;
+  flex-shrink: 0;
+  object-fit: cover;
+  display: block;
+}
+
+/* ─── HORIZONTAL SCROLL ──────────────────────────────────── */
+.h-outer {
+  height: calc(900vw + 100vh);
+}
+
+.h-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.h-track {
+  display: flex;
+  width: calc(10 * 100vw + 9 * 30vw);
+  height: 100vh;
+  gap: 30vw;
+  will-change: transform;
+}
+
+/* ─── CONTENT SECTION ────────────────────────────────────── */
+.content-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  background: #fff;
+  overflow: hidden;
+}
+
+/* Large title — upper left */
+.sec-title {
+  position: absolute;
+  top: 10.25%;
+  left: 3.08%;
+  width: 55.4%;
+  font-family: "Balto-Bold", Helvetica, sans-serif;
+  font-weight: 700;
+  color: #000;
+  font-size: clamp(2rem, 7.19vw, 7.19vw);
+  text-align: center;
+  line-height: 1;
+  z-index: 1;
+}
+
+/* Subtitle — bottom center of left half */
+.sec-subtitle {
+  position: absolute;
+  top: 81.6%;
+  left: 15.26%;
+  width: 31.1%;
+  font-family: "Balto-Bold", Helvetica, sans-serif;
+  font-weight: 400;
+  color: #000;
+  font-size: clamp(0.85rem, 2.59vw, 2.59vw);
+  text-align: center;
+  line-height: 1.3;
+}
+.sec-subtitle::first-letter { text-transform: uppercase; }
+
+/* Main image — center-left, overlaps bottom of title by ~86px */
+.sec-image,
+.sec-image-ph {
+  position: absolute;
+  top: calc(23.78% - 86px);
+  left: 7.78%;
+  width: 46%;
+  height: calc(56.25% + 86px);
+  z-index: 2;
+}
+
+.sec-image {
+  object-fit: cover;
+  display: block;
+}
+
+.sec-image-ph {
+  background: #e0ddd8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #bbb;
+  font-size: 0.75rem;
+  font-family: "Inter", sans-serif;
+}
+
+/* Text box — right column */
+.sec-textbox {
+  position: absolute;
+  top: 8%;
+  left: 64.91%;
+  width: 30.75%;
+  height: 60%;
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem 1.8rem;
+  background-color: #F7F199;
+  overflow: hidden;
+}
+
+.sec-body {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  color: #000;
+  font-size: clamp(0.75rem, 1.4vw, 1.4vw);
+  line-height: 1.65;
+}
+
+.sec-body strong {
+  font-weight: 700;
+}
+
+.sec-firstletter {
+  font-family: "Balto-Bold", Helvetica, sans-serif;
+  font-weight: 700;
+}
+
+/* ─── ENTRANCE ANIMATIONS ────────────────────────────────── */
+[data-anim] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity  0.7s cubic-bezier(0.25, 0.1, 0.25, 1) var(--d, 0s),
+    transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1) var(--d, 0s);
+}
+[data-anim].visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── MOBILE ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .site-header {
+    flex-direction: column;
+    height: auto;
+  }
+  .header-media {
+    width: 100% !important;
+    height: 60vw;
+    min-height: 260px;
+    transition: none;
+  }
+  .header-right {
+    width: 100% !important;
+    opacity: 1 !important;
+    overflow: visible;
+    padding: 2rem 1.5rem;
+    transition: none;
+  }
+  .header-title {
+    font-size: clamp(3rem, 16vw, 3rem);
+  }
+  .header-para { font-size: 1rem; }
+  .header-para .body-text { font-size: 0.9rem; }
+  .header-strip { padding-bottom: 0.5rem; }
+
+  .h-outer  { height: auto !important; }
+  .h-sticky { position: static; height: auto; overflow: visible; }
+  .h-track  {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    transform: none !important;
+  }
+
+  .content-section {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2.5rem 1.5rem 5rem;
+    border-bottom: 1px solid #e8e5e0;
+  }
+
+  .sec-title,
+  .sec-subtitle,
+  .sec-image,
+  .sec-image-ph,
+  .sec-textbox {
+    position: static;
+    width: 100%;
+    height: auto;
+    top: auto; left: auto;
+  }
+  .sec-title    { font-size: clamp(2.5rem, 12vw, 4rem); text-align: left; }
+  .sec-subtitle { font-size: 1rem; text-align: left; }
+  .sec-image, .sec-image-ph {
+    height: 56vw;
+    min-height: 200px;
+    object-fit: cover;
+  }
+  .sec-textbox {
+    min-height: 48vw;
+    padding: 1.5rem;
+    overflow: hidden;
+  }
+  .sec-body     { font-size: 0.875rem; line-height: 1.6; }
+
+  [data-anim] { opacity: 1; transform: none; transition: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ══════════════════════════════════════════════ -->
+<header class="site-header" id="site-header">
+
+  <div class="header-media">
+    <img src="Imagenes/Header.png" alt="It Girl">
+  </div>
+
+  <h1 class="header-title">It girl</h1>
+
+  <div class="header-right">
+    <div class="header-text-area">
+      <p class="header-para">
+        <span class="bold">Una de las figuras más representativas dentro del marketing de influencias ha sido la it girl.</span>
+      </p>
+      <p class="header-para">
+        <span class="body-text">Entender qué es una <em>it girl</em> te permite identificar cómo se construye el deseo en moda. No se trata solo de visibilidad, sino de la capacidad de convertir una identidad en referencia y trasladar ese valor al consumo.</span>
+      </p>
+      <p class="header-para">
+        <span class="body-text">Este mecanismo sigue activo hoy y es la base sobre la que operan muchas estrategias de marketing de influencia.</span>
+      </p>
+    </div>
+    <div class="header-strip">
+      <img class="strip-img" src="Imagenes/Header/Imagen1.png" alt="">
+      <img class="strip-img" src="Imagenes/Header/Imagen2.png" alt="">
+      <img class="strip-img" src="Imagenes/Header/Imagen3.png" alt="">
+      <img class="strip-img" src="Imagenes/Header/imagen4.png" alt="">
+    </div>
+  </div>
+
+</header>
+
+<!-- ═══ HORIZONTAL SCROLL ══════════════════════════════════ -->
+<div class="h-outer" id="h-outer">
+  <div class="h-sticky" id="h-sticky">
+    <div class="h-track" id="h-track">
+
+      <!-- 01 · Greta Garbo ─────────────────────────────── -->
+      <section class="content-section">
+        <div class="sec-title"    data-anim style="--d:0s">Iconos mediáticos</div>
+        <img  class="sec-image"   data-anim style="--d:.15s"
+              src="Imagenes/01.GretaGarbo/ImagenGreta.png" alt="Greta Garbo">
+        <div class="sec-subtitle" data-anim style="--d:.3s">La it girl como construcción controlada</div>
+        <div class="sec-textbox"  data-anim style="--d:.45s">
+          <p class="sec-body"><span class="sec-firstletter">H</span>ollywood consolida un sistema donde la imagen de las figuras públicas se diseña y controla. Vestuario, actitud y presencia se articulan como un todo coherente que se repite en medios y construye referencia. <strong>La coherencia entre identidad, imagen y narrativa es clave para construir influencia sostenida.</strong></p>
+        </div>
+      </section>
+
+      <!-- 02 · Marilyn Monroe ──────────────────────────── -->
+      <section class="content-section">
+        <div class="sec-title"    data-anim style="--d:0s">Glamour y consumo</div>
+        <img  class="sec-image" data-anim style="--d:.15s" src="Imagenes/02.MarylinMonroe/ImagenMarylin.png" alt="Marilyn Monroe">
+        <div class="sec-subtitle" data-anim style="--d:.3s">La it girl como vínculo marca–producto</div>
+        <div class="sec-textbox"  data-anim style="--d:.45s">
+          <p class="sec-body"><span class="sec-firstletter">L</span>a relación entre figuras y marcas se vuelve estructural. Casos como Hepburn–Givenchy o Monroe–Chanel muestran cómo la repetición fija asociaciones duraderas entre persona, estilo y producto. <strong>La repetición estratégica es lo que convierte una asociación en valor de marca reconocible.</strong></p>
+        </div>
+      </section>
+
+      <!-- 03 · Twiggy ─────────────────────────────────── -->
+      <section class="content-section">
+        <div class="sec-title"    data-anim style="--d:0s">Estilo y cultura</div>
+        <img  class="sec-image" data-anim style="--d:.15s" src="Imagenes/03.Twiggy/ImagenTwiggy.png" alt="Twiggy">
+        <div class="sec-subtitle" data-anim style="--d:.3s">La it girl como expresión cultural</div>
+        <div class="sec-textbox"  data-anim style="--d:.45s">
+          <p class="sec-body"><span class="sec-firstletter">L</span>a influencia se desplaza hacia la cultura juvenil y los entornos creativos. Figuras como Twiggy o Edie Sedgwick construyen referencias desde el estilo personal, repetido en medios y espacios culturales. <strong>La influencia no siempre nace desde la industria: identificar entornos culturales emergentes permite anticipar tendencias.</strong></p>
+        </div>
+      </section>
+
+      <!-- 04 · Jane Birkin ─────────────────────────────── -->
+      <section class="content-section">
+        <div class="sec-title"    data-anim style="--d:0s">Uso y visibilidad</div>
+        <img  class="sec-image" data-anim style="--d:.15s" src="Imagenes/04.JaneBirkin/ImagenJane.png" alt="Jane Birkin">
+        <div class="sec-subtitle" data-anim style="--d:.3s">La it girl como fijación de valor a través del uso</div>
+        <div class="sec-textbox"  data-anim style="--d:.45s">
+          <p class="sec-body"><span class="sec-firstletter">E</span>l valor ya no depende solo de campañas, sino del uso continuado. Casos como Jane Birkin muestran cómo la repetición en contextos reales fija la asociación entre persona y producto. <strong>El uso cotidiano y visible puede ser más potente que la comunicación publicitaria formal.</strong></p>
+        </div>
+      </section>
+
+      <!-- 05 · Kate Moss ───────────────────────────────── -->
+      <section class="content-section">
+        <div class="sec-title"    data-anim style="--d:0s">Visibilidad global</div>
+        <img  class="sec-image" data-anim style="--d:.15s" src="Imagenes/05.KateMoss/ImagenKate.png" alt="Kate Moss">
+        <div class="sec-subtitle" data-anim style="--d:.3s">La it girl como referente global sincronizado</div>
+        <div class="sec-textbox"  data-anim style="--d:.45s">
+          <p class="sec-body"><span class="sec-firstletter">L</span>a imagen se coordina a escala internacional a través de campañas, pasarelas y medios. Las supermodelos concentran visibilidad y fijan un lenguaje compartido en distintos mercados. <strong>La consistencia visual en múltiples canales amplifica el reconocimiento y acelera la construcción de tendencias.</strong></p>
+        </div>
+      </section>
+
+      <!-- 06 · Carolyn Bessette ───────────────────────── -->
+      <section class="content-section">
+        <div class="sec-title"    data-anim style="--d:0s">Vida cotidiana como contenido</div>
+        <img  class="sec-image" data-anim style="--d:.15s" src="Imagenes/06.CarolynBessette/ImagenCarolyn.png" alt="Carolyn Bessette">
+        <div class="sec-subtitle" data-anim style="--d:.3s">La it girl como figura accesible</div>
+        <div class="sec-textbox"  data-anim style="--d:.45s">
+          <p class="sec-body"><span class="sec-firstletter">E</span>n simultaneidad con la visibilidad global de las supermodelos, aparece también la influencia desde la vida cotidiana, capturada por paparazzi. Figuras como Carolyn Bessette convierten lo no producido en referencia de estilo. <strong>La percepción de autenticidad aumenta el impacto de la influencia.</strong></p>
+        </div>
+      </section>
+
+      <!-- 07 · Paris Hilton ───────────────────────────── -->
+      <section class="content-section">
+        <div class="sec-title"    data-anim style="--d:0s">Celebridad y exposición</div>
+        <img  class="sec-image" data-anim style="--d:.15s" src="Imagenes/07.ParisHilton/ImagenParis.png" alt="Paris Hilton">
+        <div class="sec-subtitle" data-anim style="--d:.3s">La it girl como estilo de vida visible</div>
+        <div class="sec-textbox"  data-anim style="--d:.45s">
+          <p class="sec-body"><span class="sec-firstletter">L</span>a cultura mediática y los realities convierten la vida personal en contenido constante. Las it girls fijan tendencias desde la repetición de códigos en su día a día. <strong>La frecuencia y continuidad en la exposición son claves para fijar códigos de consumo.</strong></p>
+        </div>
+      </section>
+
+      <!-- 08 · Susie Lau ───────────────────────────────── -->
+      <section class="content-section">
+        <div class="sec-title"    data-anim style="--d:0s">Autoedición digital</div>
+        <img  class="sec-image" data-anim style="--d:.15s" src="Imagenes/08.SusieLau/ImagenSusie.png" alt="Susie Lau">
+        <div class="sec-subtitle" data-anim style="--d:.3s">La it girl como creadora</div>
+        <div class="sec-textbox"  data-anim style="--d:.45s">
+          <p class="sec-body"><span class="sec-firstletter">B</span>logs y diferentes plataformas permiten publicar sin intermediarios. La influencia se construye desde la repetición de elecciones personales y la relación directa con la audiencia. <strong>Controlar el canal de comunicación permite construir influencia sin depender de estructuras tradicionales.</strong></p>
+        </div>
+      </section>
+
+      <!-- 09 · Selena Gomez ───────────────────────────── -->
+      <section class="content-section">
+        <div class="sec-title"    data-anim style="--d:0s">Celebrities como marcas</div>
+        <img  class="sec-image" data-anim style="--d:.15s" src="Imagenes/09.SelenaGomez/ImagenSelena.png" alt="Selena Gomez">
+        <div class="sec-subtitle" data-anim style="--d:.3s">La it girl como canal directo de negocio global</div>
+        <div class="sec-textbox"  data-anim style="--d:.45s">
+          <p class="sec-body"><span class="sec-firstletter">C</span>on la consolidación de Instagram, la influencia alcanza una escala global y directa. Actrices, cantantes y figuras públicas utilizan sus perfiles como canal propio de comunicación y negocio, integrando contenido, producto y consumo en un mismo espacio. <strong>Cuando la influencia se controla a través de un canal propio, deja de depender de la prescripción y pasa a activar conversión directa a escala global.</strong></p>
+        </div>
+      </section>
+
+      <!-- 10 · Jeanne Damas ───────────────────────────── -->
+      <section class="content-section">
+        <div class="sec-title"    data-anim style="--d:0s">De contenido a marca</div>
+        <img  class="sec-image" data-anim style="--d:.15s" src="Imagenes/10.JeanneDamas/ImagenJane-1.png" alt="Jeanne Damas">
+        <div class="sec-subtitle" data-anim style="--d:.3s">La it girl como proyecto empresarial</div>
+        <div class="sec-textbox"  data-anim style="--d:.45s">
+          <p class="sec-body"><span class="sec-firstletter">C</span>on la web 2.0, aparece una nueva generación de it girls que no dependen de la industria tradicional. Construyen su visibilidad desde blogs y redes sociales, y encuentran en plataformas como Instagram una escala que transforma esa audiencia en negocio. <strong>Ya no solo inspiran: convierten su identidad en producto, su contenido en canal y su comunidad en mercado.</strong></p>
+        </div>
+      </section>
+
+    </div><!-- /h-track -->
+  </div><!-- /h-sticky -->
+</div><!-- /h-outer -->
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Header auto-transition ─────────────────────────── */
+  const header = document.getElementById('site-header');
+  setTimeout(function () { header.classList.add('expanded'); }, 1500);
+
+  /* ── Helpers ─────────────────────────────────────────── */
+  function isMobile() { return window.innerWidth <= 768; }
+
+  /* ── Horizontal scroll ──────────────────────────────── */
+  var hOuter   = document.getElementById('h-outer');
+  var hTrack   = document.getElementById('h-track');
+  var sections = Array.from(hTrack.querySelectorAll('.content-section'));
+  var N        = sections.length;
+  var tx       = 0;
+  var GAP_VW   = 30;
+
+  function gapPx() { return GAP_VW * window.innerWidth / 100; }
+
+  function setOuterHeight() {
+    hOuter.style.height = 'calc(' + (N - 1) + ' * (100vw + ' + GAP_VW + 'vw) + 100vh)';
+  }
+
+  function onScroll() {
+    if (isMobile()) return;
+    var rect      = hOuter.getBoundingClientRect();
+    var scrolled  = Math.max(0, -rect.top);
+    var maxScroll = hOuter.offsetHeight - window.innerHeight;
+    var progress  = Math.min(1, scrolled / maxScroll);
+    tx = -progress * (N - 1) * (window.innerWidth + gapPx());
+    hTrack.style.transform = 'translateX(' + tx + 'px)';
+    checkVisibility();
+  }
+
+  function checkVisibility() {
+    var step = window.innerWidth + gapPx();
+    sections.forEach(function (sec, i) {
+      if (sec.dataset.entered) return;
+      var secLeft = i * step + tx;
+      if (secLeft < window.innerWidth * 0.6) {
+        sec.dataset.entered = '1';
+        sec.querySelectorAll('[data-anim]').forEach(function (el) {
+          el.classList.add('visible');
+        });
+      }
+    });
+  }
+
+  /* ── Mobile: IntersectionObserver ───────────────────── */
+  function initMobileIO() {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('[data-anim]').forEach(function (el) {
+            el.classList.add('visible');
+          });
+        }
+      });
+    }, { threshold: 0.15 });
+    sections.forEach(function (sec) { io.observe(sec); });
+  }
+
+  /* ── Init ────────────────────────────────────────────── */
+  if (!isMobile()) {
+    setOuterHeight();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', function () {
+      if (!isMobile()) { setOuterHeight(); onScroll(); }
+    });
+    /* Animate first section on load */
+    window.addEventListener('load', checkVisibility);
+    checkVisibility();
+  } else {
+    initMobileIO();
+  }
+
+}());
+</script>
+</body>
+</html>

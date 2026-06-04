@@ -188,19 +188,27 @@ body { overflow-x: clip; font-family: "Inter", sans-serif; }
 }
 .sec-subtitle::first-letter { text-transform: uppercase; }
 
-/* Main image — center-left, overlaps bottom of title by ~86px */
+/* Main image — center-left, below title */
 .sec-image,
 .sec-image-ph {
   position: absolute;
-  top: calc(23.78% - 86px);
+  top: 30%;
   left: 7.78%;
+  width: 40%;
+  height: 50%;
+  z-index: 2;
+}
+
+.section-oneline .sec-image,
+.section-oneline .sec-image-ph {
+  top: calc(23.78% - 86px);
   width: 46%;
   height: calc(56.25% + 86px);
-  z-index: 2;
 }
 
 .sec-image {
   object-fit: cover;
+  object-position: top;
   display: block;
 }
 
@@ -405,7 +413,7 @@ body { overflow-x: clip; font-family: "Inter", sans-serif; }
       </section>
 
       <!-- 03 · Twiggy ─────────────────────────────────── -->
-      <section class="content-section">
+      <section class="content-section section-oneline">
         <div class="sec-title"    data-anim style="--d:0s">Estilo y cultura</div>
         <img  class="sec-image" data-anim style="--d:.15s" src="Imagenes/03.Twiggy/ImagenTwiggy.png" alt="Twiggy">
         <div class="sec-subtitle" data-anim style="--d:.3s">La it girl como expresión cultural</div>
@@ -416,7 +424,7 @@ body { overflow-x: clip; font-family: "Inter", sans-serif; }
       </section>
 
       <!-- 04 · Jane Birkin ─────────────────────────────── -->
-      <section class="content-section">
+      <section class="content-section section-oneline">
         <div class="sec-title"    data-anim style="--d:0s">Uso y visibilidad</div>
         <img  class="sec-image" data-anim style="--d:.15s" src="Imagenes/04.JaneBirkin/ImagenJane.png" alt="Jane Birkin">
         <div class="sec-subtitle" data-anim style="--d:.3s">La it girl como fijación de valor a través del uso</div>

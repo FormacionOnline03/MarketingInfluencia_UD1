@@ -222,10 +222,21 @@ body { overflow-x: clip; font-family: "Inter", sans-serif; }
   width: 30.75%;
   height: 60%;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
   padding: 2rem 1.8rem;
   background-color: #F7F199;
   overflow: hidden;
+}
+
+.sec-caption {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: clamp(0.65rem, 1.1vw, 1.1vw);
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .sec-body {
@@ -377,6 +388,7 @@ body { overflow-x: clip; font-family: "Inter", sans-serif; }
               src="Imagenes/01.GretaGarbo/ImagenGreta.png" alt="Greta Garbo">
         <div class="sec-subtitle" data-anim style="--d:.3s">La it girl como construcción controlada</div>
         <div class="sec-textbox"  data-anim style="--d:.45s">
+          <p class="sec-caption">Imagen: Greta Garbo</p>
           <p class="sec-body"><span class="sec-firstletter">H</span>ollywood consolida un sistema donde la imagen de las figuras públicas se diseña y controla. Vestuario, actitud y presencia se articulan como un todo coherente que se repite en medios y construye referencia. <strong>La coherencia entre identidad, imagen y narrativa es clave para construir influencia sostenida.</strong></p>
         </div>
       </section>
@@ -387,6 +399,7 @@ body { overflow-x: clip; font-family: "Inter", sans-serif; }
         <img  class="sec-image" data-anim style="--d:.15s" src="Imagenes/02.MarylinMonroe/ImagenMarylin.png" alt="Marilyn Monroe">
         <div class="sec-subtitle" data-anim style="--d:.3s">La it girl como vínculo marca–producto</div>
         <div class="sec-textbox"  data-anim style="--d:.45s">
+          <p class="sec-caption">Imagen: Marilyn Monroe</p>
           <p class="sec-body"><span class="sec-firstletter">L</span>a relación entre figuras y marcas se vuelve estructural. Casos como Hepburn–Givenchy o Monroe–Chanel muestran cómo la repetición fija asociaciones duraderas entre persona, estilo y producto. <strong>La repetición estratégica es lo que convierte una asociación en valor de marca reconocible.</strong></p>
         </div>
       </section>
@@ -397,6 +410,7 @@ body { overflow-x: clip; font-family: "Inter", sans-serif; }
         <img  class="sec-image" data-anim style="--d:.15s" src="Imagenes/03.Twiggy/ImagenTwiggy.png" alt="Twiggy">
         <div class="sec-subtitle" data-anim style="--d:.3s">La it girl como expresión cultural</div>
         <div class="sec-textbox"  data-anim style="--d:.45s">
+          <p class="sec-caption">Imagen: Twiggy</p>
           <p class="sec-body"><span class="sec-firstletter">L</span>a influencia se desplaza hacia la cultura juvenil y los entornos creativos. Figuras como Twiggy o Edie Sedgwick construyen referencias desde el estilo personal, repetido en medios y espacios culturales. <strong>La influencia no siempre nace desde la industria: identificar entornos culturales emergentes permite anticipar tendencias.</strong></p>
         </div>
       </section>
@@ -407,6 +421,7 @@ body { overflow-x: clip; font-family: "Inter", sans-serif; }
         <img  class="sec-image" data-anim style="--d:.15s" src="Imagenes/04.JaneBirkin/ImagenJane.png" alt="Jane Birkin">
         <div class="sec-subtitle" data-anim style="--d:.3s">La it girl como fijación de valor a través del uso</div>
         <div class="sec-textbox"  data-anim style="--d:.45s">
+          <p class="sec-caption">Imagen: Jane Birkin</p>
           <p class="sec-body"><span class="sec-firstletter">E</span>l valor ya no depende solo de campañas, sino del uso continuado. Casos como Jane Birkin muestran cómo la repetición en contextos reales fija la asociación entre persona y producto. <strong>El uso cotidiano y visible puede ser más potente que la comunicación publicitaria formal.</strong></p>
         </div>
       </section>
@@ -417,6 +432,7 @@ body { overflow-x: clip; font-family: "Inter", sans-serif; }
         <img  class="sec-image" data-anim style="--d:.15s" src="Imagenes/05.KateMoss/ImagenKate.png" alt="Kate Moss">
         <div class="sec-subtitle" data-anim style="--d:.3s">La it girl como referente global sincronizado</div>
         <div class="sec-textbox"  data-anim style="--d:.45s">
+          <p class="sec-caption">Imagen: Kate Moss</p>
           <p class="sec-body"><span class="sec-firstletter">L</span>a imagen se coordina a escala internacional a través de campañas, pasarelas y medios. Las supermodelos concentran visibilidad y fijan un lenguaje compartido en distintos mercados. <strong>La consistencia visual en múltiples canales amplifica el reconocimiento y acelera la construcción de tendencias.</strong></p>
         </div>
       </section>
@@ -427,6 +443,7 @@ body { overflow-x: clip; font-family: "Inter", sans-serif; }
         <img  class="sec-image" data-anim style="--d:.15s" src="Imagenes/06.CarolynBessette/ImagenCarolyn.png" alt="Carolyn Bessette">
         <div class="sec-subtitle" data-anim style="--d:.3s">La it girl como figura accesible</div>
         <div class="sec-textbox"  data-anim style="--d:.45s">
+          <p class="sec-caption">Imagen: Carolyn Bessette</p>
           <p class="sec-body"><span class="sec-firstletter">E</span>n simultaneidad con la visibilidad global de las supermodelos, aparece también la influencia desde la vida cotidiana, capturada por paparazzi. Figuras como Carolyn Bessette convierten lo no producido en referencia de estilo. <strong>La percepción de autenticidad aumenta el impacto de la influencia.</strong></p>
         </div>
       </section>
@@ -437,6 +454,7 @@ body { overflow-x: clip; font-family: "Inter", sans-serif; }
         <img  class="sec-image" data-anim style="--d:.15s" src="Imagenes/07.ParisHilton/ImagenParis.png" alt="Paris Hilton">
         <div class="sec-subtitle" data-anim style="--d:.3s">La it girl como estilo de vida visible</div>
         <div class="sec-textbox"  data-anim style="--d:.45s">
+          <p class="sec-caption">Imagen: Paris Hilton</p>
           <p class="sec-body"><span class="sec-firstletter">L</span>a cultura mediática y los realities convierten la vida personal en contenido constante. Las it girls fijan tendencias desde la repetición de códigos en su día a día. <strong>La frecuencia y continuidad en la exposición son claves para fijar códigos de consumo.</strong></p>
         </div>
       </section>
@@ -447,6 +465,7 @@ body { overflow-x: clip; font-family: "Inter", sans-serif; }
         <img  class="sec-image" data-anim style="--d:.15s" src="Imagenes/08.SusieLau/ImagenSusie.png" alt="Susie Lau">
         <div class="sec-subtitle" data-anim style="--d:.3s">La it girl como creadora</div>
         <div class="sec-textbox"  data-anim style="--d:.45s">
+          <p class="sec-caption">Imagen: Susie Lau</p>
           <p class="sec-body"><span class="sec-firstletter">B</span>logs y diferentes plataformas permiten publicar sin intermediarios. La influencia se construye desde la repetición de elecciones personales y la relación directa con la audiencia. <strong>Controlar el canal de comunicación permite construir influencia sin depender de estructuras tradicionales.</strong></p>
         </div>
       </section>
@@ -457,6 +476,7 @@ body { overflow-x: clip; font-family: "Inter", sans-serif; }
         <img  class="sec-image" data-anim style="--d:.15s" src="Imagenes/09.SelenaGomez/ImagenSelena.png" alt="Selena Gomez">
         <div class="sec-subtitle" data-anim style="--d:.3s">La it girl como canal directo de negocio global</div>
         <div class="sec-textbox"  data-anim style="--d:.45s">
+          <p class="sec-caption">Imagen: Selena Gomez</p>
           <p class="sec-body"><span class="sec-firstletter">C</span>on la consolidación de Instagram, la influencia alcanza una escala global y directa. Actrices, cantantes y figuras públicas utilizan sus perfiles como canal propio de comunicación y negocio, integrando contenido, producto y consumo en un mismo espacio. <strong>Cuando la influencia se controla a través de un canal propio, deja de depender de la prescripción y pasa a activar conversión directa a escala global.</strong></p>
         </div>
       </section>
@@ -467,6 +487,7 @@ body { overflow-x: clip; font-family: "Inter", sans-serif; }
         <img  class="sec-image" data-anim style="--d:.15s" src="Imagenes/10.JeanneDamas/ImagenJane-1.png" alt="Jeanne Damas">
         <div class="sec-subtitle" data-anim style="--d:.3s">La it girl como proyecto empresarial</div>
         <div class="sec-textbox"  data-anim style="--d:.45s">
+          <p class="sec-caption">Imagen: Jeanne Damas</p>
           <p class="sec-body"><span class="sec-firstletter">C</span>on la web 2.0, aparece una nueva generación de it girls que no dependen de la industria tradicional. Construyen su visibilidad desde blogs y redes sociales, y encuentran en plataformas como Instagram una escala que transforma esa audiencia en negocio. <strong>Ya no solo inspiran: convierten su identidad en producto, su contenido en canal y su comunidad en mercado.</strong></p>
         </div>
       </section>

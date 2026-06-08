@@ -67,7 +67,7 @@ body { overflow-x: clip; font-family: "Inter", sans-serif; }
   opacity: 0;
   display: flex;
   flex-direction: column;
-  padding: 7.1% 5.88%;
+  padding: 3.5% 5.88%;
   background: #fff;
   transition:
     width 0.9s cubic-bezier(0.4, 0, 0.2, 1),
@@ -83,7 +83,7 @@ body { overflow-x: clip; font-family: "Inter", sans-serif; }
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 1.4em;
+  gap: 1em;
 }
 
 .header-para {
@@ -100,7 +100,7 @@ body { overflow-x: clip; font-family: "Inter", sans-serif; }
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: clamp(0.8rem, 1.37vw, 1.37vw);
-  line-height: 1.7;
+  line-height: 1.45;
   color: #444;
 }
 
@@ -108,23 +108,24 @@ body { overflow-x: clip; font-family: "Inter", sans-serif; }
   display: flex;
   flex-direction: row;
   gap: 22px;
-  margin-top: 2.5rem;
+  margin-top: 1rem;
   flex-shrink: 0;
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 
 .strip-ph {
   width: 143px;
-  height: 214px;
+  height: 170px;
   flex-shrink: 0;
   background: #e0ddd8;
 }
 
 .strip-img {
   width: 143px;
-  height: 214px;
+  height: 170px;
   flex-shrink: 0;
   object-fit: cover;
+  object-position: top;
   display: block;
 }
 
@@ -308,6 +309,7 @@ body { overflow-x: clip; font-family: "Inter", sans-serif; }
   .header-para { font-size: 1rem; }
   .header-para .body-text { font-size: 0.9rem; }
   .header-strip { padding-bottom: 0.5rem; }
+  .header-text-area { overflow: visible; }
 
   .h-outer  { height: auto !important; }
   .h-sticky { position: static; height: auto; overflow: visible; }
@@ -377,10 +379,7 @@ body { overflow-x: clip; font-family: "Inter", sans-serif; }
         <span class="body-text">Entender qué es una <em>it girl</em> te permite identificar cómo se construye el deseo en moda. No se trata solo de visibilidad, sino de la capacidad de convertir una identidad en referencia y trasladar ese valor al consumo.</span>
       </p>
       <p class="header-para">
-        <span class="body-text">Este mecanismo sigue activo hoy y es la base sobre la que operan muchas estrategias de marketing de influencia.</span>
-      </p>
-      <p class="header-para">
-        <span class="body-text">Haz scroll para conocer más.</span>
+        <span class="body-text">Este mecanismo sigue activo hoy y es la base sobre la que operan muchas estrategias de marketing de influencia. Haz scroll para conocer más.</span>
       </p>
     </div>
     <div class="header-strip">
